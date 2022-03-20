@@ -12,7 +12,7 @@ var questions = [
         answerA: '<scripting>',
         answerB: '<script>',
         answerC: '<javascript>',
-        anwerD: '<js>',
+        answerD: '<js>',
         correctAnswer: 'B'
     },
     {
@@ -20,6 +20,7 @@ var questions = [
         answerA: '<script src="xxx.js">',
         answerB: '<script href="xxx.js">',
         answerC: '<script name="xxx.js">',
+        answerD: '<a href="xx.js">',
         correctAnswer: 'A'
     },
     {
@@ -27,6 +28,7 @@ var questions = [
         answerA: 'function myFunction()',
         answerB: 'function = myFunction()',
         answerC: 'function:myFunction()',
+        answerD: 'function != myFunction()',
         correctAnswer: 'A'
     },
     {
@@ -55,22 +57,31 @@ function endGame() {
 }
 
 function askNextQuestion() {
+   
     if (questionIndex >= questions.length) {
         endGame();
+        document.getElementById('wrapper').classList.toggle('hide');
+        document.getElementById('gameContainer').classList.toggle('hide');
+
     } else {
         QuestionElement.textContent = questions[questionIndex].question
         answerAElement.textContent = questions[questionIndex].answerA
         answerBElement.textContent = questions[questionIndex].answerB
         answerCElement.textContent = questions[questionIndex].answerC
         answerDElement.textContent = questions[questionIndex].answerD
+        
     }
 }
 
 var timeRemaining = 60;
+
+var score=0;
+
   answerAElement.addEventListener('click', function (event) {
     event.preventDefault();
-    if (questions[questionIndex].correct === 'A') {
+    if (questions[questionIndex].correctAnswer === 'A') {
         alert('correct!')
+        score+=10
     } else {
         alert('Incorrect')
         timeRemaining -= 10;
@@ -83,8 +94,10 @@ answerBElement.addEventListener('click', function (event) {
     event.preventDefault();
     console.log('Answer B has been clicked');
 
-    if (questions[questionIndex].correct === 'B') {
+    if (questions[questionIndex].correctAnswer === 'B') {
         alert('correct!')
+        score+=10
+
     } else {
         alert('Incorrect')
         timeRemaining -= 10;
@@ -95,8 +108,10 @@ answerBElement.addEventListener('click', function (event) {
 
 answerCElement.addEventListener('click', function (event) {
     event.preventDefault();
-    if (questions[questionIndex].correct === 'C') {
+    if (questions[questionIndex].correctAnswer === 'C') {
         alert('correct!')
+        score+=10
+
     } else {
         alert('Incorrect')
         timeRemaining -= 10;
@@ -107,8 +122,10 @@ answerCElement.addEventListener('click', function (event) {
 
 answerDElement.addEventListener('click', function (event) {
     event.preventDefault();
-    if (questions[questionIndex].correct === 'D') {
+    if (questions[questionIndex].correctAnswer === 'D') {
         alert('correct!')
+        score+=10
+
     } else {
         alert('Incorrect')
         timeRemaining -= 10;
@@ -117,27 +134,48 @@ answerDElement.addEventListener('click', function (event) {
     askNextQuestion();
 });
 
-function startTimer() {
-    var timeRemaining = setInterval(function () {
+var answerBtnEl = $('#save');
+var answerInputEl=$('#fname');
+questionsDiv.innerHTML = "";
+var userAnswer = answerInputEl.val();
+
+  answerBtnEl.on('click', function (event) {
+    event.preventDefault();
+    console.log('Button clicked');
+
+    console.log('User answered', userAnswer);
+
+        var createP2 = document.createElement("p");
+        var createP1 = document.createElement("p");
+
+        createP1.textContent = userAnswer + "Your score is: " + score;
+        questionsDiv.appendChild(createP2);
+
+  });
+
+ function startTimer() {
+    var timerInerval = setInterval(function () {
         timeRemaining--;
 
-        if (timeRemaining == 0) {
-            clearInterval(timeRemaining);
+        if (timeRemaining === 0) {
+            clearInterval(timerInerval);
             endGame();
+            document.getElementById('wrapper').classList.toggle('hide');
+            document.getElementById('gameContainer').classList.toggle('hide');
         }
 
         document.getElementById('timer').textContent = timeRemaining;
         console.log('internal running', timeRemaining);
     }, 1000);
 
-    function startGame() {
-        document.getElementById('start').classList.toggle('hide');
-        document.getElementById('gameContainer').classList.toggle('hide');
-        askNextQuestion();
-        startTimer();
-    }
-       document.getElementById('start')
-        .addEventListener('click', startGame)
+
+ }
 
 
-}
+ 
+ function startGame() {
+      document.getElementById('start').classList.toggle('hide');
+      document.getElementById('gameContainer').classList.toggle('hide');
+      askNextQuestion();
+      startTimer();
+ }

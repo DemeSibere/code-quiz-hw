@@ -15,12 +15,14 @@
 </head>
 
 <body>
+
     <div>
-        <button onclick="startGame()" >start Game</button>
+
+        <button id="start" onclick="startGame()" >Take Quiz</button>
     </div>
     <div id="gameContainer" class="hide">
         <div id="timer">60 </div>
-        <div id="qustion"></div>
+        <div id="question"></div>
         <ul>
             <li>
                 <span>A</span>
@@ -40,6 +42,19 @@
             </li>
         </ul>
     </div>
-    <script src = "index.js"></script>
+
+    <div id="wrapper" class="hide">
+        <div id="scoreDiv">
+            <h1>My scores</h1>
+            <form>
+                <label for="fname">Initials:</label><br>
+                <input type="text" id="fname" name="fname">
+            </form>
+            <br>
+            <button id="save">Save</button>
+        </div>
+    <script src = "script.js"></script>
+
+
 </body>
 </html>
