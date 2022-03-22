@@ -40,7 +40,6 @@ This project has been deployed to GitHub pages.
    https://github.com/DemeSibere/code-quiz-hw
 
 * Deployed GitHub Page:
-
    https://demesibere.github.io/code-quiz-hw/
 
 * Code Quiz Demo:
