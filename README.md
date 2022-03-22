@@ -36,10 +36,15 @@ THEN I can save my initials and my score
 
 This project has been deployed to GitHub pages.
 
-* GitHub Repository
+* GitHub Repository:
+   https://github.com/DemeSibere/code-quiz-hw
 
+* Deployed GitHub Page:
 
-* Code Quiz Demo
+   https://demesibere.github.io/code-quiz-hw/
+
+* Code Quiz Demo:
+
 ![A user clicks through an interactive coding quiz, then enters initials to save the high score before clearing and starting over.](./assets/codedemo.gif)
 
 
