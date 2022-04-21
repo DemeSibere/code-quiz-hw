@@ -44,7 +44,7 @@ This project has been deployed to GitHub pages.
 
 * Code Quiz Demo:
 
-![A user clicks through an interactive coding quiz, then enters initials to save the high score before clearing and starting over.](./assets/codedemo.gif)
+![A user clicks through an interactive coding quiz, then enters initials to save the high score before clearing and starting over.](./Homework-4/codedemo.gif)
 
 
 ---
